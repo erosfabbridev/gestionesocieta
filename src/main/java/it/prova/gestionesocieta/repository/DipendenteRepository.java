@@ -15,14 +15,8 @@ public interface DipendenteRepository extends CrudRepository<Dipendente, Long>, 
 	// la query viene costruita in automatico!!!
 	List<Dipendente> findByNome(String name);
 
-	// Anche questa!!!
-	List<Dipendente> findByEtaGreaterThan(int etaInput);
-
 	// Combinazione di campi!!! (Come i dynamic finders)
-	List<Dipendente> findByNomeAndEta(String nome, int eta);
-
-	// Order by!!!!
-	List<Dipendente> findByEtaOrderByNomeDesc(int eta);
+	List<Dipendente> findByNomeAndCognome(String nome, int cognome);
 
 	// se ho necessità particolari
 	@Query("from Dipendente d where d.nome like ?1%")

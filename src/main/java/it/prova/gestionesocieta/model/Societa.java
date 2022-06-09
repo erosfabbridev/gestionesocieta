@@ -25,24 +25,24 @@ public class Societa {
 	@Column(name = "id")
 	private Long id;
 	@Column(name = "ragionesociale")
-	private String ragioneSociale;
+	private String ragionesociale;
 	@Column(name = "indirizzo")
 	private String indirizzo;
 	@Column(name = "datafondazione")
 	private Date dataFondazione;;
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "societa")
-	private Set<Dipendente> abitanti = new HashSet<>();
+	private Set<Dipendente> dipendenti = new HashSet<>();
 	
 	public Societa() {
 		
 	}
 
-	public Societa(String ragioneSociale, String indirizzo, Date dataFondazione, Set<Dipendente> abitanti) {
+	public Societa(String ragioneSociale, String indirizzo, Date dataFondazione, Set<Dipendente> dipendenti) {
 		super();
-		this.ragioneSociale = ragioneSociale;
+		this.ragionesociale = ragioneSociale;
 		this.indirizzo = indirizzo;
 		this.dataFondazione = dataFondazione;
-		this.abitanti = abitanti;
+		this.dipendenti = dipendenti;
 	}
 
 	public Long getId() {
@@ -54,11 +54,11 @@ public class Societa {
 	}
 
 	public String getRagioneSociale() {
-		return ragioneSociale;
+		return ragionesociale;
 	}
 
 	public void setRagioneSociale(String ragioneSociale) {
-		this.ragioneSociale = ragioneSociale;
+		this.ragionesociale = ragioneSociale;
 	}
 
 	public String getIndirizzo() {
@@ -77,12 +77,12 @@ public class Societa {
 		this.dataFondazione = dataFondazione;
 	}
 
-	public Set<Dipendente> getAbitanti() {
-		return abitanti;
+	public Set<Dipendente> getDipendenti() {
+		return dipendenti;
 	}
 
-	public void setAbitanti(Set<Dipendente> abitanti) {
-		this.abitanti = abitanti;
+	public void setDipendenti(Set<Dipendente> dipendenti) {
+		this.dipendenti = dipendenti;
 	}
 	
 	
