@@ -6,19 +6,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.domain.ExampleMatcher.StringMatcher;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import it.prova.gestionesocieta.model.Dipendente;
 import it.prova.gestionesocieta.model.Societa;
 import it.prova.gestionesocieta.repository.SocietaRepository;
 
+@Service
 public class SocietaServiceImpl implements SocietaService{
 	
 	@Autowired
 	private SocietaRepository societaRepository ;
 
 	@Transactional(readOnly = true)
-	public List<Societa> listAllMunicipi() {
+	public List<Societa> listAllSocieta() {
 		return (List<Societa>) societaRepository.findAll();
 	}
 
@@ -48,6 +50,12 @@ public class SocietaServiceImpl implements SocietaService{
 		ExampleMatcher matcher = ExampleMatcher.matching()
 				.withStringMatcher(StringMatcher.CONTAINING); 
 		return (List<Societa>) societaRepository.findAll(Example.of(example, matcher));
+	}
+
+	@Transactional(readOnly = true)
+	public Societa findAllEager() {
+		
+		return (Societa) societaRepository.findAllEager();
 	}
 
 

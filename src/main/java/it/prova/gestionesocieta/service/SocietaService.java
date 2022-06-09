@@ -7,7 +7,7 @@ import it.prova.gestionesocieta.model.Societa;
 
 public interface SocietaService {
 
-	public List<Societa> listAllMunicipi() ;
+	public List<Societa> listAllSocieta() ;
 
 	public Societa caricaSingoloSocieta(Long id);
 
@@ -19,5 +19,5 @@ public interface SocietaService {
 
 	public List<Societa> findByExample(Societa example) throws Exception;
 	
-
+	public Societa findAllEager();
 }

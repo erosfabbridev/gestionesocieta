@@ -16,5 +16,8 @@ public interface SocietaRepository extends CrudRepository<Societa, Long>, QueryB
 	// lo faccio eager per provare
 	@EntityGraph(attributePaths = { "dipendenti" })
 	List<Societa> findAllDistinctByDipendentiNome(String name);
+	
+	@EntityGraph(attributePaths = { "dipendenti" })
+	List<Societa> findAllEager();
 
 }
