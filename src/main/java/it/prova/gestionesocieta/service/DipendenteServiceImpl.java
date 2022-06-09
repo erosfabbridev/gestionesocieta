@@ -2,62 +2,59 @@ package it.prova.gestionesocieta.service;
 
 import java.util.List;
 
-import it.prova.gestionesocieta.model.Dipendente;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
+import org.springframework.data.domain.ExampleMatcher.StringMatcher;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import it.prova.gestionesocieta.model.Dipendente;
+import it.prova.gestionesocieta.repository.DipendenteRepository;
+
+
+@Service
 public class DipendenteServiceImpl implements DipendenteService {
 
-	@Override
+	@Autowired
+	private DipendenteRepository dipendenteRepository;
+
+	@Transactional(readOnly = true)
 	public List<Dipendente> listAllDipendenti() {
-
-		return null;
+		return (List<Dipendente>) dipendenteRepository.findAll();
 	}
 
-	@Override
-	public Dipendente caricaSingoloDipendente(Long id) {
-
-		return null;
+	@Transactional(readOnly = true)
+	public Dipendente caricaSingoloDipendente(long id) {
+		return dipendenteRepository.findById(id).orElse(null);
 	}
 
-	@Override
+	@Transactional
 	public void aggiorna(Dipendente dipendenteInstance) {
+		dipendenteRepository.save(dipendenteInstance);
 	}
 
-	@Override
+	@Transactional
 	public void inserisciNuovo(Dipendente dipendenteInstance) {
+		dipendenteRepository.save(dipendenteInstance);
 	}
 
-	@Override
+	@Transactional
 	public void rimuovi(Dipendente dipendenteInstance) {
+		dipendenteRepository.delete(dipendenteInstance);
 	}
 
-	@Override
+	@Transactional(readOnly = true)
 	public List<Dipendente> findByExample(Dipendente example) {
-
-		return null;
+		ExampleMatcher matcher = ExampleMatcher.matching()
+				.withStringMatcher(StringMatcher.CONTAINING); // Match string containing pattern
+		// .withIgnoreCase();
+		return (List<Dipendente>) dipendenteRepository.findAll(Example.of(example, matcher));
 	}
 
-	@Override
+	@Transactional(readOnly = true)
 	public List<Dipendente> findByNome(String nameInput) {
-
-		return null;
-	}
-
-	@Override
-	public List<Dipendente> cercaAbitantiPerNomeAndCognome(String nomeInput, int etaInput) {
-
-		return null;
-	}
-
-	@Override
-	public List<Dipendente> cercaPerNomeCheIniziaCon(String tokenIniziale) {
-
-		return null;
-	}
-
-	@Override
-	public List<Dipendente> cercaPerCognomeEager(String cognomeInput) {
-
-		return null;
+		return dipendenteRepository.findByNome(nameInput);
 	}
 
 }

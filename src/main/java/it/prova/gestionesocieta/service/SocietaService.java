@@ -17,12 +17,7 @@ public interface SocietaService {
 
 	public void rimuovi(Societa societaInstance);
 
-	public List<Societa> findByExample(Societa example);
+	public List<Societa> findByExample(Societa example) throws Exception;
 	
-	public List<Societa> cercaByRagioneSocialeILike(String term);
-	
-	public void removeConEccezione(Societa societaInstance);
-	
-	public List<Societa> cercaTuttiIMunicipiConDipendentiiConnome(String nome);
 
 }

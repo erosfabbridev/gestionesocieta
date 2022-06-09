@@ -7,7 +7,7 @@ import it.prova.gestionesocieta.model.Dipendente;
 public interface DipendenteService {
 	public List<Dipendente> listAllDipendenti();
 
-	public Dipendente caricaSingoloDipendente(Long id);
+	public Dipendente caricaSingoloDipendente(long id);
 
 	public void aggiorna(Dipendente dipendenteInstance);
 
@@ -19,9 +19,4 @@ public interface DipendenteService {
 	
 	public List<Dipendente> findByNome(String nameInput);
 	
-	public List<Dipendente> cercaAbitantiPerNomeAndCognome(String nomeInput, int etaInput);
-	
-	public List<Dipendente> cercaPerNomeCheIniziaCon(String tokenIniziale);
-	
-	public List<Dipendente> cercaPerCognomeEager(String cognomeInput);
 }
